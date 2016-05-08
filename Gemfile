@@ -26,6 +26,7 @@ gem "figaro", "~> 1.1.1"
 gem 'activerecord-postgis-adapter'
 gem 'resque'
 gem 'resque-scheduler'
+gem 'rufus-scheduler'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

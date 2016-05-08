@@ -192,6 +192,7 @@ DEPENDENCIES
   rails_12factor
   resque
   resque-scheduler
+  rufus-scheduler
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
