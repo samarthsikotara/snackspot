@@ -1,7 +1,4 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
+
   <% if params[:hub_mode] == "subscribe" && params[:hub_verify_token] == "cool"%>
   	<%= params[:hub_challenge] %>
   <% end %>
-</p>
