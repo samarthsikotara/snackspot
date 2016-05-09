@@ -8,7 +8,8 @@ class WelcomesController < ApplicationController
         render :text => 'Failed to authorize facebook challenge request'
       end
     elsif request.method == "POST"
-      #do stuff with information 
+      #do stuff with information
+      request.raw_post 
     end
   end
 
