@@ -4,9 +4,12 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   
-  namespace :welcome do
-    match "/real-time", to: "welcome#real_time", :via => [:get,:post]
+  resources :welcomes do
+    collection do
+      match "real-time", :via => [:get,:post], to: "welcomes#real_time"
+    end
   end
+  #match :send_sms, via: [:get, :post], to: 'beauty_leads#send_sms'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
