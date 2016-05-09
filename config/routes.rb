@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
-
+  
+  namespace :welcome do
+    match "/real-time", to: "welcome#real_time", :via => [:get,:post]
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
