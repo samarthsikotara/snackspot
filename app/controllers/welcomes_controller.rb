@@ -2,7 +2,7 @@ class WelcomesController < ApplicationController
 
 	def real_time
     if request.method == "GET"
-      if params['hub.mode'] =='subscribe' && params['hub.verify_token'] =='stringToken'
+      if params['hub.mode'] =='subscribe' && params['hub.verify_token'] =='cool'
         render :text => params['hub.challenge']
       else
         render :text => 'Failed to authorize facebook challenge request'
