@@ -2,15 +2,17 @@ require 'rufus/scheduler'
 
 ## to start scheduler
 scheduler = Rufus::Scheduler.new
+client = SendGrid::Client.new(api_key: TaskbobConfig.SENDGRID_APIKEY)
 
 ## It will print message every i minute
 scheduler.every("1m") do
-  puts("HELLO #{Time.now}")
+  puts("HELLO #{Time.current}")
+  #res = client.send(SendGrid::Mail.new(to: 'samarthsikotara@gmail.com', from: 'samarth@taskbob.com', from_name: "Sammy",  subject: 'Hello world!', text: 'Hi there!', html: '<b>Hi there!</b>'))
 end
 
 ## Prints the message every day at noon
 scheduler.cron("0,2 * * * *") do
-  puts("HI #{Time.now}")
+  puts("HI #{Time.current}")
 end
 
 scheduler.in '20m' do

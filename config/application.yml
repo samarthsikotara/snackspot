@@ -1,2 +1,3 @@
 alerts_service_url: "http://alerts.taskbob.com/"
 test_email: "samarthsikotara@gmail.com"
+SENDGRID_APIKEY: "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"

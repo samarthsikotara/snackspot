@@ -27,6 +27,8 @@ gem 'activerecord-postgis-adapter'
 gem 'resque'
 gem 'resque-scheduler'
 gem 'rufus-scheduler'
+gem 'sendgrid-ruby'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
