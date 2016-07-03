@@ -8,10 +8,8 @@
   var startPos;
   var geoSuccess = function(position) {
     startPos = position;
-    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-  	document.cookie = "latitude="+document.getElementById('startLat').innerHTML;
-  	document.cookie = "longitude="+document.getElementById('startLon').innerHTML;
+    document.cookie = "latitude="+startPos.coords.latitude;
+  	document.cookie = "longitude="+startPos.coords.longitude;
   };
   var t = navigator.geolocation.getCurrentPosition(geoSuccess);
 
