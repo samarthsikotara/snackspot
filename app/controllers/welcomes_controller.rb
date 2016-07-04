@@ -18,7 +18,7 @@ class WelcomesController < ApplicationController
   def index
     latitude = params[:latitude];longitude = params[:longitude]
     geo_data = tweet_data(latitude, longitude)
-    @points = geo_data["statuses"].map { |data| [data["user"]["name"], data["user"]["description"], data["geo"]["coordinates"][0], data["geo"]["coordinates"][1], data["user"]["profile_image_url"], data["user"]["screen_name"]] unless data["geo"].nil? }.compact
+    @points = geo_data["statuses"].map { |data| [data["user"]["name"], data["user"]["description"], data["geo"]["coordinates"][0], data["geo"]["coordinates"][1], data["user"]["profile_image_url"], data["user"]["screen_name"], data["text"]] unless data["geo"].nil? }.compact
   end
 
 end

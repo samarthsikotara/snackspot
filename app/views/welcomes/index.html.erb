@@ -74,7 +74,7 @@ function initMap() {
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-        		infoWindow.setContent('<img src='+infoWindowContent[i][4]+'/>'+'<br />'+'<a href = https://twitter.com/'+infoWindowContent[i][5]+'>'+'@'+infoWindowContent[i][5]+'</a>');
+        		infoWindow.setContent('<img src='+infoWindowContent[i][4]+'/>'+'<br />'+'<a href = https://twitter.com/'+infoWindowContent[i][5]+'>'+'@'+infoWindowContent[i][5]+'</a>'+'<br />'+'<div>'+infoWindowContent[i][6]+'</div>');
             infoWindow.open(map, marker);
         }
       })(marker, i));
