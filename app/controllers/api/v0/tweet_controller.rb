@@ -12,6 +12,7 @@ module Api::V0
 					{
 						:id => tweet["user"]["id"],
 						:name => tweet["user"]["name"],
+						:gender => get_gender(tweet["user"]["name"]),
 						:description => tweet["user"]["description"], 
 						:screen_name => tweet["user"]["screen_name"], 
 						:latitude => tweet["geo"]["coordinates"][0], 

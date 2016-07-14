@@ -13,8 +13,8 @@ module WelcomeHelper
 		first_name = name.gsub(/mr|mrs|dr/i, '').strip.split(' ')[0]
 		last_name = name.gsub(/mr|mrs|dr/i, '').strip.split(' ')[1]
 		last_name = last_name.nil? ? name.gsub(/mr|mrs|dr/i, '').strip[0] : last_name
-		url = URI("http://api.namsor.com/onomastics/api/json/gendre/#{first_name}/#{last_name}")
-		http = Net::HTTP.new(url.host, url.port)
+		encoded_url = URI.encode("http://api.namsor.com/onomastics/api/json/gendre/#{first_name}/#{last_name}")
+		url = URI.parse(encoded_url); http = Net::HTTP.new(url.host, url.port)
 		request = Net::HTTP::Get.new(url.to_s, headers={})
 		response = http.request(request)
 		resp = JSON.parse(response.body)
