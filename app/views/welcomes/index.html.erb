@@ -58,13 +58,15 @@ function initMap() {
     // Display multiple markers on a map
     var infoWindow = new google.maps.InfoWindow(), marker, i;
     
-    // Loop through our array of markers & place each one on the map  
+    // Loop through our array of markers & place each one on the map
+    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';  
     for( i = 0; i < markers.length; i++ ) {
   		var position = new google.maps.LatLng(markers[i][2], markers[i][3]);
       bounds.extend(position);
       marker = new google.maps.Marker({
           position: position,
           map: map,
+          icon: image,
           title: markers[i][0]
       });
       
