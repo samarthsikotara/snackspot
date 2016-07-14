@@ -73,7 +73,7 @@ function initMap() {
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-        		infoWindow.setContent('<img src='+infoWindowContent[i][4]+'/>'+'<br />'+'<a href = https://twitter.com/'+infoWindowContent[i][5]+'>'+'@'+infoWindowContent[i][5]+'</a>'+'<br />'+'<div>'+infoWindowContent[i][6]+'</div>');
+        		infoWindow.setContent('<img src='+infoWindowContent[i][4]+'/>'+'<br />'+'<a href = https://twitter.com/'+infoWindowContent[i][5]+' '+'target="_new">'+'@'+infoWindowContent[i][5]+'</a>'+'<br />'+'<div>'+infoWindowContent[i][6]+'</div>');
             infoWindow.open(map, marker);
         }
       })(marker, i));
@@ -84,7 +84,7 @@ function initMap() {
 
     // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
     var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-        this.setZoom(11);
+        this.setZoom(13);
         google.maps.event.removeListener(boundsListener);
     });
 }
@@ -93,7 +93,7 @@ function initMap() {
 </script>
 <% if params[:latitude] && params[:longitude] %>
 	<div class="panel-body">
-	  <div id="map-canvas" style='height: 500px;width: 800px;'></div>
+	  <div id="map-canvas" style='height: 600px;'></div>
 	</div>
 <% end %>
 
