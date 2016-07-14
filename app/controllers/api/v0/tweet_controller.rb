@@ -29,7 +29,7 @@ module Api::V0
 					}
 				end
 			end
-			render json: {:date => data.compact}, status: 200	
+			render json: {:data => data.compact}, status: 200	
 		end
 
 	end
