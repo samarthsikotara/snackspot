@@ -35,8 +35,6 @@ $(document).ready(function(){
 });
 </script>
 
-<!-- <p id="startLat"></p>
-<p id="startLon"></p> -->
 <button>GO!</button>
 
 <script type="text/javascript">
@@ -97,3 +95,43 @@ function initMap() {
 	  <div id="map-canvas" style='height: 500px;'></div>
 	</div>
 <% end %>
+
+<!-- <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    .map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+  <div id='map-one' class='map'> </div>
+<script>
+
+      var json;
+      $.getJSON( "/data.json", function( data ) {
+        json = data;
+        if(json.length == 0){alert("No tweets hunted today just yet (possible 30min delay)");}
+        loadMap();
+      });
+// Provide your access token
+function loadMap(){
+
+
+L.mapbox.accessToken = 'pk.eyJ1Ijoic2FtYXJ0aHNpa290YXJhIiwiYSI6Im9JVmlCTEEifQ.PxLQDSDUWutS1i8ME094Kg';
+// Create a map in the div #map
+var map =L.mapbox.map('map-one', 'mapbox.streets');
+
+var myLayer = L.mapbox.featureLayer().addTo(map);
+var geoJson = json;
+// Set a custom icon on each marker based on feature properties.
+myLayer.on('layeradd', function(e) {
+    var marker = e.layer,
+        feature = marker.feature;
+
+    marker.setIcon(L.icon(feature.properties.icon));
+});
+
+// Add features to the map.
+myLayer.setGeoJSON(geoJson);
+}
+//L.mapbox.accessToken = 'pk.eyJ1Ijoic2FtYXJ0aHNpa290YXJhIiwiYSI6Im9JVmlCTEEifQ.PxLQDSDUWutS1i8ME094Kg';
+ // L.mapbox.map('map-one', 'mapbox.streets').setView([19.1197,72.9051], 14);
+</script> -->

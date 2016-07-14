@@ -9,6 +9,12 @@ Rails.application.routes.draw do
       match "real-time", :via => [:get,:post], to: "welcomes#real_time"
     end
   end
+
+  namespace :api do
+    namespace :v0 do
+      get '/tweets' => 'tweet#tweets'
+    end
+  end
   #match :send_sms, via: [:get, :post], to: 'beauty_leads#send_sms'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

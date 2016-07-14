@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160714090248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "tweets", force: :cascade do |t|
+    t.string   "tweet_id"
+    t.datetime "tweet_created_at"
+    t.string   "name"
+    t.text     "profile_pic_url"
+    t.string   "screen_name"
+    t.text     "location"
+    t.point    "location_point"
+    t.string   "tweets_count"
+    t.string   "followers_count"
+    t.string   "following_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
