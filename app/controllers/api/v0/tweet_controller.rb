@@ -12,7 +12,6 @@ module Api::V0
 						:id => tweet["user"]["id"],
 						:name => tweet["user"]["name"],
 						:gender => get_gender(tweet["user"]["name"])["gender"],
-						:gender_proximity => (get_gender(tweet["user"]["name"])["scale"]*100).abs.to_s+"%",
 						:description => tweet["user"]["description"], 
 						:screen_name => tweet["user"]["screen_name"],
 						:profile_url => 'https://twitter.com/'+tweet["user"]["screen_name"].to_s, 
