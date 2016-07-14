@@ -14,7 +14,8 @@ module Api::V0
 						:name => tweet["user"]["name"],
 						:gender => get_gender(tweet["user"]["name"]),
 						:description => tweet["user"]["description"], 
-						:screen_name => tweet["user"]["screen_name"], 
+						:screen_name => tweet["user"]["screen_name"],
+						:profile_url => 'https://twitter.com/'+tweet["user"]["screen_name"].to_s, 
 						:latitude => tweet["geo"]["coordinates"][0], 
 						:longitude => tweet["geo"]["coordinates"][1], 
 						:profile_pic_url => tweet["user"]["profile_image_url"], 
@@ -27,7 +28,8 @@ module Api::V0
 							:text => tweet["text"], 
 							:created_at => Time.zone.parse(tweet["created_at"].to_s).to_i,
 							:retweet_count => tweet["retweet_count"],
-							:favorite_count => tweet["favorite_count"]
+							:favorite_count => tweet["favorite_count"],
+							:reply_url => "https://twitter.com/"+tweet["user"]["screen_name"].to_s+'/status/'+tweet["id"].to_s
 						}
 					}
 				end
