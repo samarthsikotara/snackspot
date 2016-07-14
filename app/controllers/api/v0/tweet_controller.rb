@@ -22,6 +22,8 @@ module Api::V0
 						:followers_count => tweet["user"]["followers_count"],
 						:tweets_count => tweet["user"]["statuses_count"],
 						:following_count => tweet["user"]["friends_count"],
+						:retweet_count => tweet["retweet_count"],
+						:favorite_count => tweet["favorite_count"],
 						:tweet => {
 							:id => tweet["id"], 
 							:text => tweet["text"], 
