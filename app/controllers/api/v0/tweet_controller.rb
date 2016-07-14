@@ -29,7 +29,7 @@ module Api::V0
 					}
 				end
 			end
-			render json: data, status: 200	
+			render json: data.compact, status: 200	
 		end
 
 	end
