@@ -11,7 +11,7 @@ module Api::V0
 				unless tweet["geo"].nil?
 					{
 						:id => tweet["user"]["id"],
-						:name => tweet["user"]["name"], 
+						:name => tweet["user"]["name"],
 						:description => tweet["user"]["description"], 
 						:screen_name => tweet["user"]["screen_name"], 
 						:latitude => tweet["geo"]["coordinates"][0], 
