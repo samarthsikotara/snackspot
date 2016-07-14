@@ -35,7 +35,6 @@ $(document).ready(function(){
 });
 </script>
 
-<button>GO!</button>
 
 <script type="text/javascript">
 function initMap() {
@@ -91,8 +90,32 @@ function initMap() {
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuMyqFUUQX_Vo7OFUNIN_X9K63liIzw2U&callback=initMap">
 </script>
+<style type="text/css">
+  
+</style>
+<% unless params[:latitude] && params[:longitude] %>
+  <div class="faicon">
+    <div class="fa fa-twitter">
+    </div>
+    <div class="title">
+      TwitterHunt
+    </div>
+    <div class="content">
+      <button class="add">GO!</button>
+    </div>
+  </div>
+<% end %>
+
 <% if params[:latitude] && params[:longitude] %>
-	<div class="panel-body">
+	<div id="info">
+    <center>
+      <img src="https://d3k81ch9hvuctc.cloudfront.net/company/ffuBp2/images/2480c069-1902-4e26-9903-ea5c4a7a090b.png?1468516330749">
+      <br> By
+      <a href="https://www.twitter.com/samarthsikotara">@samarthsikotara</a>  
+    </center>
+  </div>
+
+  <div class="panel-body">
 	  <div id="map-canvas" style='height: 600px;'></div>
 	</div>
 <% end %>
