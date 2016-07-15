@@ -11,7 +11,7 @@ module Api::V0
 					{
 						:id => tweet["id"],
 						:user_id => tweet["user"]["id"], 
-						:profile_pic_url => tweet["user"]["profile_image_url"],
+						:profile_pic_url => tweet["user"]["profile_image_url"].gsub("_normal", ""),
 						:text => tweet["text"], 
 						:created_at => Time.zone.parse(tweet["created_at"].to_s).to_i,
 						:retweet_count => tweet["retweet_count"],
@@ -31,7 +31,7 @@ module Api::V0
 						:profile_url => 'https://twitter.com/'+tweet["user"]["screen_name"].to_s, 
 						:latitude => tweet["geo"]["coordinates"][0], 
 						:longitude => tweet["geo"]["coordinates"][1], 
-						:profile_pic_url => tweet["user"]["profile_image_url"], 
+						:profile_pic_url => tweet["user"]["profile_image_url"].gsub("_normal", ""), 
 						:profile_background_image_url => tweet["user"]["profile_background_image_url"], 
 						:followers_count => tweet["user"]["followers_count"],
 						:tweets_count => tweet["user"]["statuses_count"],
