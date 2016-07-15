@@ -27,7 +27,6 @@ module Api::V0
 						:name => tweet["user"]["name"],
 						:description => tweet["user"]["description"], 
 						:screen_name => tweet["user"]["screen_name"],
-						:gender => (get_gender(tweet["user"]["name"])["gender"] rescue ""),
 						:profile_url => 'https://twitter.com/'+tweet["user"]["screen_name"].to_s, 
 						:latitude => tweet["geo"]["coordinates"][0], 
 						:longitude => tweet["geo"]["coordinates"][1], 
