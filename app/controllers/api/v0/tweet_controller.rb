@@ -21,6 +21,7 @@ module Api::V0
 						:followers_count => tweet["user"]["followers_count"],
 						:tweets_count => tweet["user"]["statuses_count"],
 						:following_count => tweet["user"]["friends_count"],
+						:created_at => Time.zone.parse(tweet["created_at"].to_s),
 						:tweet => {
 							:id => tweet["id"], 
 							:text => tweet["text"], 
@@ -32,7 +33,7 @@ module Api::V0
 					}
 				end
 			end
-			render json: {:data => data.compact}, status: 200	
+			render json: {:data => data.compact.sort_by { |k| k["created_at"]}}, status: 200	
 		end
 
 	end
