@@ -23,6 +23,6 @@ module WelcomeHelper
 	end
 
 	def store_tweets(resp)
-		Resque.enqueue(TweetData, resp["statuses"]) unless resp["statuses"].nil?
+		#Resque.enqueue(TweetData, resp["statuses"]) unless resp["statuses"].nil?
 	end
 end
