@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v0 do
       get '/tweets' => 'tweet#tweets'
+      get '/people' => 'tweet#people'
     end
   end
   #match :send_sms, via: [:get, :post], to: 'beauty_leads#send_sms'
