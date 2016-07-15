@@ -5,21 +5,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	window.onload = function() {
-  var startPos;
-  var x = document.getElementById("demo");
-  var geoSuccess = function(position) {
-    startPos = position;
-    document.cookie = "latitude="+startPos.coords.latitude;
-  	document.cookie = "longitude="+startPos.coords.longitude;
+    var startPos;
+    var x = document.getElementById("demo");
+    var geoSuccess = function(position) {
+      startPos = position;
+      document.cookie = "latitude="+startPos.coords.latitude;
+    	document.cookie = "longitude="+startPos.coords.longitude;
+    };
+    if (navigator.geolocation) {
+      var t = navigator.geolocation.getCurrentPosition(geoSuccess);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
   };
-  if (navigator.geolocation) {
-    var t = navigator.geolocation.getCurrentPosition(geoSuccess);
-  } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-  
-};
-function getCookie(cname) {
+  function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
     for(var i = 0; i <ca.length; i++) {
@@ -32,12 +31,12 @@ function getCookie(cname) {
         }
     }
     return "";
-}
-$(document).ready(function(){
+  }
+  $(document).ready(function(){
     $("button").click(function(){
       window.location.href = "/welcomes?latitude="+getCookie("latitude")+"&longitude="+getCookie("longitude");
     });
-});
+  });
 </script>
 
 <div id="demo"></div>
@@ -45,53 +44,53 @@ $(document).ready(function(){
 <script type="text/javascript">
 function initMap() {
   var map;
-    var bounds = new google.maps.LatLngBounds();
-    var mapOptions = {
-      mapTypeId: 'roadmap'
-    };
-                    
-    // Display a map on the page
-    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-    //map.setTilt(45);
-        
-    // Multiple Markers
-    var markers = <%= @points.to_json.html_safe %>;
-                        
-    // Info Window Content
-    var infoWindowContent = <%= @points.to_json.html_safe %>;
-        
-    // Display multiple markers on a map
-    var infoWindow = new google.maps.InfoWindow(), marker, i;
-    
-    // Loop through our array of markers & place each one on the map
-    for( i = 0; i < markers.length; i++ ) {
-  		var position = new google.maps.LatLng(markers[i][2], markers[i][3]);
-      bounds.extend(position);
-      marker = new google.maps.Marker({
-          position: position,
-          map: map,
-          icon: markers[i][4],
-          title: markers[i][0]
-      });
+  var bounds = new google.maps.LatLngBounds();
+  var mapOptions = {
+    mapTypeId: 'roadmap'
+  };
+                  
+  // Display a map on the page
+  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+  //map.setTilt(45);
       
-      // Allow each marker to have an info window
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-      		infoWindow.setContent('<img src='+infoWindowContent[i][4]+'/>'+'<br />'+'<a href = https://twitter.com/'+infoWindowContent[i][5]+' '+'target="_new">'+'@'+infoWindowContent[i][5]+'</a>'+'<br />'+'<div>'+infoWindowContent[i][6]+'</div>');
-          infoWindow.open(map, marker);
-        }
-      })(marker, i));
-
-      // Automatically center the map fitting all markers on the screen
-      map.fitBounds(bounds);
-    }
-
-    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
-    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-        this.setZoom(13);
-        google.maps.event.removeListener(boundsListener);
+  // Multiple Markers
+  var markers = <%= @points.to_json.html_safe %>;
+                      
+  // Info Window Content
+  var infoWindowContent = <%= @points.to_json.html_safe %>;
+      
+  // Display multiple markers on a map
+  var infoWindow = new google.maps.InfoWindow(), marker, i;
+  
+  // Loop through our array of markers & place each one on the map
+  for( i = 0; i < markers.length; i++ ) {
+		var position = new google.maps.LatLng(markers[i][2], markers[i][3]);
+    bounds.extend(position);
+    marker = new google.maps.Marker({
+        position: position,
+        map: map,
+        icon: markers[i][4],
+        title: markers[i][0]
     });
+    
+    // Allow each marker to have an info window
+
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      return function() {
+    		infoWindow.setContent('<img src='+infoWindowContent[i][4]+'/>'+'<br />'+'<a href = https://twitter.com/'+infoWindowContent[i][5]+' '+'target="_new">'+'@'+infoWindowContent[i][5]+'</a>'+'<br />'+'<div>'+infoWindowContent[i][6]+'</div>');
+        infoWindow.open(map, marker);
+      }
+    })(marker, i));
+
+    // Automatically center the map fitting all markers on the screen
+    map.fitBounds(bounds);
+  }
+
+  // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+  var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+      this.setZoom(13);
+      google.maps.event.removeListener(boundsListener);
+  });
 }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuMyqFUUQX_Vo7OFUNIN_X9K63liIzw2U&callback=initMap">
