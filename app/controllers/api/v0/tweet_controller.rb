@@ -40,8 +40,8 @@ module Api::V0
 					}
 				end
 			end
-
-			render json: {:data => {:tweets => tweets.compact.sort_by { |k| k["created_at"]}, :people => people.compact.sort_by { |k| k["created_at"]}}}, status: 200	
+			people = people.compact.uniq!{|e| e[:id]}
+			render json: {:data => {:tweets => tweets.compact.sort_by { |k| k["created_at"]}, :people => people.sort_by { |k| k["created_at"]}}}, status: 200	
 		end
 
 	end
