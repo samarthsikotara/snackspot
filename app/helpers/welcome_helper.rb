@@ -6,6 +6,7 @@ module WelcomeHelper
 		headers = {'Authorization' => "Bearer AAAAAAAAAAAAAAAAAAAAADVZvgAAAAAAh6c%2F50%2BA5n5edeyjWyBZ%2F0m1Qd0%3DuNdHwnlEG6nJwjUvbeVEBHtwBt3Wqar8bXJ0Md1sIBvq2lR4Vx"}
 		request = Net::HTTP::Get.new(url.to_s, headers)
 		response = http.request(request)
+		store_tweets(JSON.parse(response.body))
 		resp = JSON.parse(response.body)
 	end
 
@@ -19,5 +20,9 @@ module WelcomeHelper
 		response = http.request(request)
 		resp = JSON.parse(response.body)
 		resp
+	end
+
+	def store_tweets(resp)
+		Resque.enqueue(TweetData, resp["statuses"]) unless resp["statuses"].nil?
 	end
 end
