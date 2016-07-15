@@ -6,13 +6,18 @@
 <script>
 	window.onload = function() {
   var startPos;
+  var x = document.getElementById("demo");
   var geoSuccess = function(position) {
     startPos = position;
     document.cookie = "latitude="+startPos.coords.latitude;
   	document.cookie = "longitude="+startPos.coords.longitude;
   };
-  var t = navigator.geolocation.getCurrentPosition(geoSuccess);
-
+  if (navigator.geolocation) {
+    var t = navigator.geolocation.getCurrentPosition(geoSuccess);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+  
 };
 function getCookie(cname) {
     var name = cname + "=";
@@ -30,18 +35,19 @@ function getCookie(cname) {
 }
 $(document).ready(function(){
     $("button").click(function(){
-      window.location.href = "https://guarded-river-10761.herokuapp.com/welcomes?latitude="+getCookie("latitude")+"&longitude="+getCookie("longitude");
+      window.location.href = "/welcomes?latitude="+getCookie("latitude")+"&longitude="+getCookie("longitude");
     });
 });
 </script>
 
+<div id="demo"></div>
 
 <script type="text/javascript">
 function initMap() {
   var map;
     var bounds = new google.maps.LatLngBounds();
     var mapOptions = {
-        mapTypeId: 'roadmap'
+      mapTypeId: 'roadmap'
     };
                     
     // Display a map on the page
@@ -72,8 +78,8 @@ function initMap() {
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-        		infoWindow.setContent('<img src='+infoWindowContent[i][4]+'/>'+'<br />'+'<a href = https://twitter.com/'+infoWindowContent[i][5]+' '+'target="_new">'+'@'+infoWindowContent[i][5]+'</a>'+'<br />'+'<div>'+infoWindowContent[i][6]+'</div>');
-            infoWindow.open(map, marker);
+      		infoWindow.setContent('<img src='+infoWindowContent[i][4]+'/>'+'<br />'+'<a href = https://twitter.com/'+infoWindowContent[i][5]+' '+'target="_new">'+'@'+infoWindowContent[i][5]+'</a>'+'<br />'+'<div>'+infoWindowContent[i][6]+'</div>');
+          infoWindow.open(map, marker);
         }
       })(marker, i));
 
