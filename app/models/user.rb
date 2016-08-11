@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
       config.access_token        = self.oauth_token
       config.access_token_secret = self.oauth_secret
     end
-    client.retweet(tweet_id)
+    client.retweet(tweet_id) rescue nil
     #client.update(tweet)
   end
 end
