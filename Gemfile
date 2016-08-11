@@ -31,6 +31,8 @@ gem 'sendgrid-ruby'
 gem 'rails-api'
 gem 'activerecord-postgis-adapter'
 gem "font-awesome-rails"
+gem 'twitter', '~> 5.3.1'
+gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

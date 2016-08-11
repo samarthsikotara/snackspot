@@ -78,4 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   ENV["REDISTOGO_URL"] ||= "redis://redistogo:bc3e063d5b9bfca5e09aec2d884b1e4f@lab.redistogo.com:9543/"
+
+  config.twitter_key = "6qaBGPGMl1tgQ0nmjjzHZv5nS"
+  config.twitter_secret = "moiPXbZLl1KAl6NWmf077Dc4SbY5oVzqPF3eVaSvrgjqPqjKoq"
 end

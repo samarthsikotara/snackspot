@@ -5,10 +5,26 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<%= yield %>
-
+<%= render 'layouts/header' %>
+  <div class="container-fluid" id="main">
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav nav-pills nav-stacked" style="margin-top: 68px;">
+          <!-- <li class="nav-item"><a class="nav-link" href="#">Overview</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Items</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Helpers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Brands</a></li> -->
+        </ul>
+      </div>
+      <div class="col-md-9 col-lg-10 main">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
