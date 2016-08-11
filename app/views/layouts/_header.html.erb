@@ -1,0 +1,16 @@
+<nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+  <button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+      ☰
+  </button>
+  <a class="navbar-brand" href="#">TweetMe</a>
+  <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
+    <ul class="nav navbar-nav pull-right">
+      <% if current_user %>
+        Signed in as <strong><%= current_user.name %></strong>!
+        <%= link_to "Logout", signout_path, id: "sign_out", style: "color: #fff;" %>
+      <% else %>
+        <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in", style: "color: #fff;" %>
+      <% end %>
+    </ul>
+  </div>
+</nav>
