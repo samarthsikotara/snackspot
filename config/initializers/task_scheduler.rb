@@ -14,7 +14,6 @@ scheduler.every("1m") do
   # 	p "Fetched tweets fot #{locality.name}"
   # end
   currently_running_hashtags = ::Hashtag.where("DATE(created_at) = ?", Time.current.to_date)
-  debugger
   if currently_running_hashtags.present?
     currently_running_hashtags.each do |hashtag|
       tweet_ids = search_tweet_data("taskbob", "2897608646", hashtag.text)
