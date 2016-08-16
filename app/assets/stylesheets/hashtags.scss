@@ -1,0 +1,23 @@
+// Place all the styles related to the hashtags controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.helper-box{
+  background: #fff !important;
+}
+
+.user-info-box{
+  border-color: #eff2f7;
+  /* font-size: 13px; */
+  font-weight: 400;
+  background: #fafafa;
+  text-transform: uppercase;
+  padding: 15px;
+}
+
+.helper-box{
+  max-width:650px;
+  margin:100px auto;
+  border: 1px solid #eee;
+  padding:20px;
+}

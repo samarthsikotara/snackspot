@@ -1,0 +1,52 @@
+<div id="problem">
+  <div class="form-group row">
+    <div class="col-sm-8">
+      <%= link_to "New Hashtag <i class='fa fa-plus'></i>".html_safe, new_hashtag_path, class: "btn btn-primary", style: "color: #fff;"%>
+    </div>
+  </div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<section class="panel">
+  <span class="panel-heading label label-pill label-primary">Hashtag details</span>
+  <div class="panel-body">
+    <section id="unseen">
+      
+      <table id="offer" class="table table-hover general-table">
+
+        <thead>
+          <tr>
+            <td><b>#</b></td>
+            <td><b>Name</b></td>
+            <td><b>Created At</b></td>
+          </tr> 
+        </thead>
+        <tbody>
+          <% @hashtags.each do |hashtag| %>
+          <tr>
+            <td><%= hashtag.id %></td>
+            <td><%= hashtag.text%></td>
+            <td><%= hashtag.created_at %></td>
+            <td>
+              <!-- Single button -->
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  More
+                </button>
+                <div class="dropdown-menu">
+                  <%= link_to 'Edit', edit_hashtag_path(hashtag), class: "dropdown-item" %>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to 'Destroy', hashtag, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
+                </div>
+              </div>
+            </td> 
+          <tr>  
+          <% end %>
+          
+        </tbody>
+
+      </table>
+    </section>
+  </div>
+</section>

@@ -10,7 +10,7 @@ module WelcomeHelper
 		resp = JSON.parse(response.body)
 	end
 
-	def search_tweet_data(keyword, user_id)
+	def search_tweet_data(keyword, user_id, hashtag)
 		url = URI("https://api.twitter.com/1.1/search/tweets.json?q=#{keyword}&result_type=recent&count=25")
 		http = Net::HTTP.new(url.host, url.port);http.use_ssl = true
 		headers = {'Authorization' => "Bearer AAAAAAAAAAAAAAAAAAAAADVZvgAAAAAAh6c%2F50%2BA5n5edeyjWyBZ%2F0m1Qd0%3DuNdHwnlEG6nJwjUvbeVEBHtwBt3Wqar8bXJ0Md1sIBvq2lR4Vx"}
@@ -21,7 +21,11 @@ module WelcomeHelper
 		tweet_ids = []
 		resp["statuses"].each do |tweet|
 			if ([user_id].include?(tweet["user"]["id"].to_s)) && tweet["in_reply_to_status_id"].nil? && tweet["in_reply_to_status_id_str"].nil? && tweet["in_reply_to_user_id"].nil? && tweet["in_reply_to_user_id_str"].nil? && tweet["in_reply_to_screen_name"].nil?
-				tweet_ids << tweet["id"]
+				if tweet["entities"].present? && tweet["entities"]["hashtags"].present?
+					if tweet["entities"]["hashtags"].map{|p| p["text"]}.include?(hashtag)
+						tweet_ids << tweet["id"]
+					end
+				end
 			end
 		end
 		tweet_ids.reverse
