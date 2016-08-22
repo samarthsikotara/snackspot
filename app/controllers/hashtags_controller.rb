@@ -42,7 +42,7 @@ class HashtagsController < ApplicationController
   def update
     respond_to do |format|
       if @hashtag.update(hashtag_params)
-        format.html { redirect_to hashtags_path, notice: 'Hashtag was successfully updated.' }
+        format.html { redirect_to @hashtag, notice: 'Hashtag was successfully updated.' }
         format.json { render :show, status: :ok, location: @hashtag }
       else
         format.html { render :edit }
