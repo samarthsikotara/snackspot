@@ -28,7 +28,7 @@ gem 'resque'
 gem 'resque-scheduler'
 gem 'rufus-scheduler'
 gem 'sendgrid-ruby'
-gem 'rails-api'
+#gem 'rails-api'
 gem 'activerecord-postgis-adapter'
 gem "font-awesome-rails"
 gem 'twitter', '~> 5.3.1'
